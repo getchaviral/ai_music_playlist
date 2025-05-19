@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Music Playlist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 AI Mood-Based Playlist</h1>
+        <input type="text" id="moodInput" placeholder="How are you feeling?" />
+        <button onclick="fetchPlaylist()">Get Playlist</button>
+        <h2 id="mood"></h2>
+        <ul id="playlist"></ul>
+    </div>
+
+    <script>
+        async function fetchPlaylist() {
+            const moodText = document.getElementById("moodInput").value;
+            const response = await fetch("http://localhost:5000/get_playlist", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ text: moodText })
+            });
+            const data = await response.json();
+            
+            document.getElementById("mood").innerText = `Detected Mood: ${data.mood}`;
+            const playlist = document.getElementById("playlist");
+            playlist.innerHTML = data.tracks.map(track => `<li>${track.name} - ${track.artist}</li>`).join("");
+        }
+        async function fetchPlaylist() {
+    try {
+        let response = await fetch("http://localhost:5000/get_playlist");
+        let data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error("Error fetching playlist:", error);
+    }
+}
+
+    </script>
+</body>
+</html>
