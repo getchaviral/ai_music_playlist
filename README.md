@@ -12,4 +12,4 @@ A Node.js web app that generates mood-based music playlists using AI and user in
 - HTML5, CSS3, JavaScript
 - Spotify API (or any external source)
 
-## 📁 Project Structure
+
