@@ -1,6 +1,8 @@
 # 🎶 AI Music Playlist
 
 A Node.js web app that generates mood-based music playlists using AI and user input.
+# Deployment
+https://ai-music-playlist.vercel.app/ 
 
 ## 🌟 Features
 - 🎧 Suggests songs based on mood
